@@ -1,0 +1,17 @@
+version: '2'
+
+networks:
+  self-service-password:
+    driver: bridge
+
+services:
+  self-service-password:
+    image: docker-self-service-password:latest
+    container_name: self-service-password
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - /data/self-service-password/config.inc.php:/var/www/localhost/htdocs/conf/config.inc.php
+    networks:
+      - self-service-password
